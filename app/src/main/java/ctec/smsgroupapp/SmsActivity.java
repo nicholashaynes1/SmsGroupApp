@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Button;
 import android.telephony.SmsManager;
-
+import android.widget.Toast;
 
 
 public class SmsActivity extends AppCompatActivity
@@ -45,11 +45,35 @@ public class SmsActivity extends AppCompatActivity
                     String Contact = smsNumberField.getText().toString();
                     String Message = smsMessageField.getText().toString();
                     sendSMS(Contact, Message);
+
+                    Toast.makeText(currentView.getContext(), "message was sent", Toast.LENGTH_SHORT).show();
                 }
 
+                catch (Exception currentException)
+                {
+                    Toast.makeText(currentView.getContext(), "message was not sent", Toast.LENGTH_LONG).show();
+                    Toast.makeText(currentView.getContext(), currentException.getMessage(), Toast.LENGTH_LONG).show();
+                }
+
+
+
+
             }
-        })
+        });
     }
+
+
+
+
+    private void sendSMS(String messageAddress, String messageContent)
+    {
+        SmsManager mySMSManager = SmsManager.getDefault();
+        mySMSManager.sendTextMessage(messageAddress, null, messageContent, null, null);
+
+    }
+
+
+
 
 
     @Override

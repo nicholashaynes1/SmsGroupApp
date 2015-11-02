@@ -9,6 +9,10 @@ import android.widget.EditText;
 import android.widget.Button;
 import android.telephony.SmsManager;
 import android.widget.Toast;
+import android.widget.ListView;
+import android.widget.ArrayAdapter;
+
+import java.util.ArrayList;
 
 
 public class SmsActivity extends AppCompatActivity
@@ -16,8 +20,10 @@ public class SmsActivity extends AppCompatActivity
     private EditText smsMessageField;
     private EditText smsNumberField;
     private Button sendSMSButton;
+    private Button phraseButton;
 
-
+    private ListView phraseList;
+    private ArrayList<String> arrayPhraseList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -28,9 +34,38 @@ public class SmsActivity extends AppCompatActivity
         smsMessageField = (EditText) findViewById(R.id.smsContextEditText);
         smsNumberField = (EditText) findViewById(R.id.smsNumberEditText);
         sendSMSButton = (Button) findViewById(R.id.sendSmsButton);
+        phraseButton = (Button) findViewById(R.id.phraseButton);
+
+        phraseList = (ListView) findViewById(R.id.phraseList);
+        arrayPhraseList = new ArrayList<String>();
+
+        buildArrayList();
+        arrayListToListView();
 
         setupListeners();
+
     }
+
+
+    private void buildArrayList()
+    {
+        arrayPhraseList.add("Have a nice day!");
+
+    }
+
+
+    private void arrayListToListView()
+    {
+        ArrayAdapter<String> myListAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayPhraseList);
+        phraseList.setAdapter(myListAdapter);
+    }
+
+
+
+
+
+
+
 
 
     private void setupListeners()
@@ -59,6 +94,31 @@ public class SmsActivity extends AppCompatActivity
 
 
             }
+        });
+
+
+
+
+
+
+
+
+        phraseButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View ButtonView)
+            {
+               if(phraseList.getVisibility() == View.GONE)
+               {
+                   phraseList.setVisibility(View.VISIBLE);
+               }
+                else
+               {
+                   phraseList.setVisibility(View.GONE);
+               }
+            }
+
+
         });
     }
 

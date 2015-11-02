@@ -35,6 +35,29 @@
         android:text="SEND!!!"
         android:id="@+id/sendSmsButton"
         android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/phraseList"
+        android:choiceMode="singleChoice"
+        android:visibility="gone"
+        android:background="#fffbfd"
+        android:layout_below="@+id/phraseButton"
+        android:layout_alignLeft="@+id/smsNumberEditText"
+        android:layout_alignStart="@+id/smsNumberEditText"
+        android:layout_above="@+id/sendSmsButton"
+        android:layout_alignRight="@+id/phraseButton"
+        android:layout_alignEnd="@+id/phraseButton"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pre-Done Phrases"
+        android:id="@+id/phraseButton"
+        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="40dp"/>
+        android:visibility="visible"/>
+
 </RelativeLayout>

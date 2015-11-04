@@ -60,4 +60,23 @@
         android:layout_centerHorizontal="true"
         android:visibility="visible"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Emily(feel free to spam)"
+        android:id="@+id/emilyButton"
+        android:layout_below="@+id/phraseButton"
+        android:layout_toLeftOf="@+id/sendSmsButton"
+        android:layout_toStartOf="@+id/sendSmsButton"
+        android:layout_marginTop="51dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nick"
+        android:id="@+id/nickButton"
+        android:layout_alignTop="@+id/emilyButton"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+
 </RelativeLayout>

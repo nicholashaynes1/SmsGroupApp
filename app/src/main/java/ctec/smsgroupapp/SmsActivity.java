@@ -11,6 +11,8 @@ import android.telephony.SmsManager;
 import android.widget.Toast;
 import android.widget.ListView;
 import android.widget.ArrayAdapter;
+import android.widget.AdapterView;
+
 
 import java.util.ArrayList;
 
@@ -21,6 +23,10 @@ public class SmsActivity extends AppCompatActivity
     private EditText smsNumberField;
     private Button sendSMSButton;
     private Button phraseButton;
+    private Button emilyButton;
+    private Button nickButton;
+
+
 
     private ListView phraseList;
     private ArrayList<String> arrayPhraseList;
@@ -35,6 +41,12 @@ public class SmsActivity extends AppCompatActivity
         smsNumberField = (EditText) findViewById(R.id.smsNumberEditText);
         sendSMSButton = (Button) findViewById(R.id.sendSmsButton);
         phraseButton = (Button) findViewById(R.id.phraseButton);
+        nickButton = (Button) findViewById(R.id.nickButton);
+        emilyButton = (Button) findViewById(R.id.emilyButton);
+
+
+
+
 
         phraseList = (ListView) findViewById(R.id.phraseList);
         arrayPhraseList = new ArrayList<String>();
@@ -50,6 +62,8 @@ public class SmsActivity extends AppCompatActivity
     private void buildArrayList()
     {
         arrayPhraseList.add("Have a nice day!");
+        arrayPhraseList.add("Your punctuation is superb today!");
+        arrayPhraseList.add("Boy oh boy you sure are dandy!");
 
     }
 
@@ -59,8 +73,6 @@ public class SmsActivity extends AppCompatActivity
         ArrayAdapter<String> myListAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayPhraseList);
         phraseList.setAdapter(myListAdapter);
     }
-
-
 
 
 
@@ -97,9 +109,14 @@ public class SmsActivity extends AppCompatActivity
         });
 
 
+            phraseList.setOnItemClickListener(new AdapterView.OnItemClickListener()
+            {
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+                {
+                    smsMessageField.setText(arrayPhraseList.get(position));
+                }
 
-
-
+            });
 
 
 
@@ -108,19 +125,52 @@ public class SmsActivity extends AppCompatActivity
             @Override
             public void onClick(View ButtonView)
             {
-               if(phraseList.getVisibility() == View.GONE)
-               {
-                   phraseList.setVisibility(View.VISIBLE);
-               }
-                else
-               {
-                   phraseList.setVisibility(View.GONE);
-               }
+                if (phraseList.getVisibility() == View.GONE)
+                {
+                    phraseList.setVisibility(View.VISIBLE);
+                } else
+                {
+                    phraseList.setVisibility(View.GONE);
+                }
             }
 
 
         });
+
+
+        nickButton.setOnClickListener(new View.OnClickListener()
+        {
+           @Override
+        public void onClick(View ButtonView)
+           {
+
+               smsNumberField.setText("8017937631");
+
+           }
+
+        });
+
+
+        emilyButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View ButtonView)
+            {
+                smsNumberField.setText("8017957846");
+            }
+
+        });
+
+
+
+
     }
+
+
+
+
+
+
 
 
 

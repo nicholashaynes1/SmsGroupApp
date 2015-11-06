@@ -17,6 +17,9 @@ import android.widget.AdapterView;
 import java.util.ArrayList;
 
 
+/**
+ * @author Nick Haynes, Tobin andersen, Ethan Throndsen, Dylan Rockne
+ */
 public class SmsActivity extends AppCompatActivity
 {
     private EditText smsMessageField;
@@ -59,6 +62,9 @@ public class SmsActivity extends AppCompatActivity
     }
 
 
+    /**
+     * adds our phrases to the arrayList
+     */
     private void buildArrayList()
     {
         arrayPhraseList.add("Have a nice day!");
@@ -68,6 +74,9 @@ public class SmsActivity extends AppCompatActivity
     }
 
 
+    /**
+     * Sets the ArrayList to the ListView
+     */
     private void arrayListToListView()
     {
         ArrayAdapter<String> myListAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayPhraseList);
@@ -109,6 +118,9 @@ public class SmsActivity extends AppCompatActivity
         });
 
 
+        /**
+         * Creates a popup with some phrase options.
+         */
             phraseList.setOnItemClickListener(new AdapterView.OnItemClickListener()
             {
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id)
@@ -137,6 +149,9 @@ public class SmsActivity extends AppCompatActivity
 
         });
 
+        /**
+         * Sends the message to Nick
+         */
 
         nickButton.setOnClickListener(new View.OnClickListener()
         {
@@ -150,6 +165,9 @@ public class SmsActivity extends AppCompatActivity
 
         });
 
+        /**
+         * Sends the message to Emily.
+         */
 
         emilyButton.setOnClickListener(new View.OnClickListener()
         {
@@ -167,13 +185,11 @@ public class SmsActivity extends AppCompatActivity
     }
 
 
-
-
-
-
-
-
-
+    /**
+     * Sends the message.
+     * @param messageAddress The number where the message is going.
+     * @param messageContent What they're sending.
+     */
 
     private void sendSMS(String messageAddress, String messageContent)
     {
